@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+</head>
+<body>
+    <p>
+        8. Write​ ​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ get​ ​ difference​ ​between​ ​ two​ ​ dates,​ ​ from​ ​ maximum​ ​
+        unit​ ​ to minimum​ ​ unit.
+    </p>
+    <br/>
+    <script>    
+                let d1 = new Date(prompt("Enter date1  mm/dd/yyyy format :","01/07/2018"));
+                let d2 = new Date(prompt("Enter date2  mm/dd/yyyy format :","03/02/2020"));
+            document.write(d1);
+            document.write("<br/>"+d2);
+            datediff(d1,d2);
+            function datediff(d1,d2){
+                let d3 = Math.abs(d2 - d1);
+                let year = Math.floor(d3 / (1000 * 3600 * 24 * 365));
+                let month = Math.floor(d3 / (1000 * 3600 * 24 * 30)) - year * 12;
+                let day = Math.floor(d3 / (1000 * 3600 * 24)) - month * 30 - year * 12 * 30;
+                document.write(`<br/> ${year} year, ${month} month,  ${day} day`)
+            }
+    </script>
+</body>
+</html>

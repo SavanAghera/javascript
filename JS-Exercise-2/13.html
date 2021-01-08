@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13</title>
+</head>
+<body>
+    <p>
+13. Write​ ​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ print​​ an​ ​ integer​ ​ with​ ​ commas​ ​ as​ ​ thousands​ ​
+separators.
+    </p>
+    <script>    
+        let number = prompt("enter number",1234567);
+        function numComa (n){
+            let  f = new Intl.NumberFormat('es-us');
+            return f.format(n);
+        }
+        document.write("<br/>"+numComa(number));
+    </script>
+</body>
+</html>

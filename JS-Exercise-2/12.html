@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <p>
+12. Write​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ chop​ ​ a ​ ​ string​ ​into​ ​ chunks​ ​ of​ ​ a ​ ​ given​ ​ length.
+    </p>
+    <script>
+            function chop(s, nn) {
+
+                for (let i = 0; i < s.length; i += nn) {
+                    a[i] = s.substring(i, i + nn);
+                }
+                return a.join(" ");
+            }
+        let string = prompt("enter string","RapidOps Solution");
+        let n = +prompt("Enter number",2);
+        let a = [];
+        document.write(chop(string, n))    
+        
+        document.write(chop(string,n))
+    </script>
+</body>
+</html>

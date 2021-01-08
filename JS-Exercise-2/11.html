@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+</head>
+<body>
+    <p>
+        11. Write​ ​ a ​ ​ JavaScript​ ​function​ ​ to​ ​ insert​ ​ a ​ ​ string​ ​ within​ ​ a ​ ​ string​ ​ at​ ​ a ​ ​
+        particular​ ​ position (default​ ​ is​ ​ 1).
+    </p>
+    <script>
+            let string1 = "This is a sample string"
+            
+            let string2 = prompt("enter String2");
+            let a = + prompt("enter begin",1);
+            joins(string1,string2,a);
+            function joins(string1, string2, a) {
+            var output = [string1.slice(0, a), string2, string1.slice(a)].join('');
+            document.write(output)}
+    </script>
+</body>
+</html>

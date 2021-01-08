@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+<body>
+    <p>
+        15. Write​ ​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ delete​ ​ particular​ ​object​ ​ from​ ​ array​ ​ and​ ​ add​ ​ new​
+        ​ object​ ​ at particular​ ​ position. Also if the position does not exist then error message should be shown to the
+        user.
+    </p>
+    <br/>
+    <script>    
+        let array = [{ name: "Jack", age: 23 }, { name: "Sam", age: 12 }, { name: "Max", age: 20 }];
+        
+        function delete_e(id){
+            array.splice(id,1);
+        }
+        function add(id,data){
+            if(id>array.length){
+                alert("id unvalid");
+            }else array.splice(id,0,data);
+
+        }
+
+        let a = confirm("you want to add ?");
+        if(a) {
+            let name = prompt("enter name","savan");
+            let age = +prompt("age",21);
+            let id = +prompt("enter id",1);
+            add(id,{name:name,age:age});
+            console.log(array);
+            document.write( JSON.stringify(array));
+        }
+
+
+    let d = confirm("you want to delete ?");
+    if (d) {
+        let id = +prompt("enter id", 1);
+        delete_e(id);
+        console.log(array);
+        document.write(JSON.stringify(array));
+    }
+    </script>
+</body>
+</html>

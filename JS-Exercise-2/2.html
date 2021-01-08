@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <p>2. Write​ ​ a ​ ​ JavaScript​ ​ program​ ​ which​ ​ accepts​ ​ a ​ ​ number​​ as​ ​ input​ ​ and​ ​ insert​ ​ dashes​ ​
+    (-) between​ ​ each​ ​ two​ ​ even​ ​ numbers.
+
+    </p>
+    <br/>
+    <script>
+        let num = prompt("enter number","02544568");
+        let n = [];
+        document.write(num);
+        n =num.split('').map((value,index,arr)=>{
+            if(value%2==0 && arr[index+1]%2==0){
+                return value = value + "-";
+            }
+            return value;
+        }).join("");
+        document.write("<br/> Out Put:"+n);
+    </script>
+</body>
+</html>

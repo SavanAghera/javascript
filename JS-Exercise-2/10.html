@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10</title>
+</head>
+<body>
+    <p>10. Write​ ​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ get​ ​ time​ ​differences​ ​ in​ ​ years,​ ​ months,​ ​ weeks,​ ​
+    days,​ ​ hours and​ ​ minutes​ ​ between​ ​ two​ ​ dates.
+    </p>
+    <br/>
+    <script>
+
+            let d1 = new Date(prompt("Enter date1 in 'mm/dd/yyyy' format :", "01/02/2000,11:30"));
+            let d2 = new Date(prompt("Enter date2 in 'mm/dd/yyyy' format :", "05/06/2005,13:30"));
+
+            document.write("Date1: " + d1 + "<br><br>");
+            document.write("Date2: " + d2 + "<br><br>");
+
+            let detailedDiff = (date1, date2) => {
+                let diffMins = parseInt((date2 - date1) / (1000 * 60), 10);
+
+                let diffHours = Math.floor(diffMins / 60);
+                let diffDays = Math.floor(diffHours / 24);
+                let diffWeeks = Math.floor(diffDays / 7) + " weeks " + diffDays % 7 + " days";
+                let diffMonths = Math.floor(diffDays / 30) + " months " + diffDays % 30 + " days";
+                let diffYears = diffDate(date1, date2);
+
+                return diffYears + "<br>or " + diffMonths + "<br>or " + diffWeeks + "<br>or " + diffDays + " days <br>or " + diffHours + " hours <br>or " + diffMins + " minutes";
+            }
+
+            let diffDate = (date1, date2) => {
+                    let diffDays = parseInt((date2 - date1) / (1000 * 60 * 60 * 24), 10);
+
+                    let diffYear = 0;
+                    let diffMonth = 0;
+
+                    if (diffDays >= 365) {
+                        diffYear = Math.floor(diffDays / 365);
+                        diffDays = diffDays % 365;
+                    }
+                    if (diffDays >= 12) {
+                        diffMonth = Math.floor(diffDays / 12);
+                        diffDays = diffDays % 12;
+                    }
+
+
+                    return diffYear + " years " + diffMonth + " months " + diffDays + " days";
+                }
+
+            document.write("<br/>Differece of date1 and date2 is: <br>" + detailedDiff(d1, d2) + "<br>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14</title>
+</head>
+<body>
+    <pre>
+
+14. Write​ ​ a ​ ​ JavaScript​ ​ function​ ​ to​ ​ print​​ array​ ​ of​ ​ object​ ​ in​ ​ ascending​ ​ order​ ​ of​ ​
+age, & descending​ ​ order​ ​ of​ ​ name.​ ​ Make​ ​ array​ ​ of​ ​ object​ ​ with​ ​ three​ ​ fields​ ​which are​​:
+
+1.​ ​ Id,​ ​
+2.​ ​ Name,​ ​
+3. Age
+
+NOTE:​ ​ Array​ ​ have​ ​ minimum​ ​ 10​ ​ objects.
+    </pre>
+    <br/>
+    <br/>
+    <script>
+        let arr = [{id:12, name:"parth",age:22}, { id: 10, name: "rutvik", age: 20 }, { id: 12, name: "jay", age: 18 },
+    { id: 1267, name: "harsh", age: 18 }, { id: 1212, name: "jay", age: 18 }, { id: 42, name: "rajesh", age: 18 }, { id: 12, name: "jay", age: 18 },
+{ id: 1245, name: "savan", age: 18 }, { id: 1278, name: "deepa", age: 18 }, { id: 52, name: "ray", age: 18 }];
+        
+        document.write(JSON.stringify(arr)+"<br/>");
+        arr.sort((a, b) => parseFloat(a.age) - parseFloat(b.age));
+        document.write("</br> </br>after sort by age :<br/>"+JSON.stringify(arr));
+
+        arr.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        
+        document.write("</br> </br>after sort by name :</br> </br>"+JSON.stringify(arr) + "<br/>");
+    </script>
+</body>
+</html>

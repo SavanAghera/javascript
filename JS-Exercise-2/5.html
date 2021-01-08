@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+</head>
+<body>
+    <p>
+        5. Write​ ​ a ​ ​ JavaScript​ ​ program​ ​ to​ ​ compute​ ​ the​ ​ union​ ​of​ ​ two​ ​ arrays,​ ​ and​ ​ Write​ ​ a ​ ​
+        JavaScript function​ ​ to​ ​ find​ ​ the​ ​ difference​ ​ of​ ​ two​ ​ arrays, and intersection of two arrays.
+
+    </p>
+<br/>
+    <script>
+        let a= [0,1,2,3];
+        let b= [3,4,5];
+
+        document.write("a: ["+a+"]<br/>");
+        document.write("b: ["+b+"]<br/>");
+        document.write("union: ["+union(a,b)+"]<br/>");
+        document.write("a-b:["+diff(a,b)+"]<br/>");
+        document.write("a-b:[" + diff(b,a) + "]<br/>");
+        document.write("intersect:[" + intersect(a, b) + "]<br/>");
+
+        function union(a,b) {
+            return [...new Set([...a,...b])];
+        }
+        function diff(a,b) {
+            let arr = a.filter((v)=>{
+                if(b.indexOf(v)==-1) return v.toString();
+            });
+
+            return arr;
+        }
+
+        function intersect(a,b) {
+            return a.filter((v)=>{
+                if(b.indexOf(v) != -1) return v.toString();
+            });
+        }
+    </script>
+</body>
+</html>
