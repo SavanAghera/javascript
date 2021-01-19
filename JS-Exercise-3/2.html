@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <style>
+        #input_html{
+            width: 100%;
+        }
+    </style>
+    <h2> Write​ ​ a ​​ JavaScript​ ​ function​ ​ to​ ​ remove​ ​ HTML/XML​ ​ tags​ ​ from​ ​ string.
+
+    </h2>
+    <form>
+        <input id="input_html" value="<p><strong><em>Javascript​ ​ Exercises</em></strong></p>" />
+
+    </form>
+    <button onclick="submit()">Submit</button>
+    <script>
+        function submit(){
+            alert(input_html.value.replace(/<.+?>/g,""))
+        }
+    </script>
+</body>
+</html>

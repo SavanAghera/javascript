@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task2</title>
+</head>
+<body>
+    <h2>
+        Write​ ​ a ​ ​ JavaScript​ ​ program ​ that​ ​ displays​ ​ list​ ​ of​ ​ name​ ​ according​ ​ to​ ​ sports ​group.
+    </h2><br/>
+    <p id="out_put"></p>
+    <script>
+        let array =  [{Name:'Ravindra' ,Sport:['Chess','Cricket'] },
+        {Name:'Ravi' ,Sport:['Cricket','Football'] },
+        {Name:'Rishabh' ,Sport:['Table-tennis','Football'] }];
+        
+    
+        let new_array = [...array];
+        let final_arr = [];
+        let sports = new_array.map((el)=> el.Sport);
+        sports =[ ...new Set(sports.flat(3))] ;
+        console.log(['Chess','Cricket'].indexOf("Cricket"))
+
+        for(let i=0;i<sports.length;i++){
+            final_arr.push(new Object({[`${sports[i]}`]:[]}))
+        }
+        
+
+        for(let i=0;i<sports.length;i++){
+            for(let j=0;j<new_array.length;j++){
+                if(new_array[j].Sport.indexOf(sports[i])+1  ){
+                    final_arr[i][`${sports[i]}`].push(new_array[j].Name);
+                }
+            }
+        }
+
+        
+
+
+        document.getElementById('out_put').innerHTML = JSON.stringify(final_arr,null,4);
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <h2>
+        Write​ ​ a ​​ JavaScript​ ​ function​ ​ that​ ​ creates​ ​ a ​ ​ table,​ ​ by accepting​ ​ row and ​ column​ ​ numbers​ ​ from​ ​ the user,​ ​ and​ ​ input​s ​ row-column​ ​ number​ ​ as​ ​content​ ​ (e.g.​ ​ Row-0​ ​ Column-0)​ ​ of​ ​ a ​ ​ cell.
+    </h2>
+    <form >
+        <label >row</label> 
+        <input id="row" type="number"/>
+
+        <label >Column</label> 
+        <input id="col" type="number"/>
+    </form>
+    <br/>
+    <button onclick="Create()">Create table</button>
+    <table id="table" border="1">
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+
+
+    <script>
+      function  Create(){
+          
+          const Row = +row.value;
+          const Column = +col.value;
+          const Table = document.getElementById('tableBody');
+          Table.innerHTML="";
+          for(let i=0;i<Row;i++){
+            let table_row = document.createElement("tr");
+                for(let j=0;j<Column;j++){
+                    let table_col = document.createElement('td');
+                    let col_text = document.createTextNode(`Row-${i} Column-${j}`);
+
+                    table_col.appendChild(col_text);
+                    table_row.appendChild(table_col);
+                }
+                Table.appendChild(table_row);
+            }
+      }
+    </script>
+</body>
+</html>

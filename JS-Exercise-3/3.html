@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+<body>
+    <h2>
+        Write​ ​ a ​​ pattern​ ​ that​ ​ can identify an​ ​ e-mail​ ​ address.
+    </h2>
+    <form>
+        <input id="email" type="email"  value="agherasavan3@gmail.com"/>
+    </form>
+    <p id="write"></p>
+    <button onclick="submit()">Submit</button>
+    <script>
+       
+        const pattern = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+        
+        function submit(){
+            let hide_email = email.value;
+            const regx = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+            if(regx.test(hide_email)){
+               alert("valid email")
+                
+            }else{
+                alert("write valid email");
+            }
+        
+        }
+    </script>
+</body>
+</html>

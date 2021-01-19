@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <h2> Write​ ​ a ​​ JavaScript​ ​ function​ ​ to​ ​ hide​ ​ email​ ​ addresses​ ​ to​ ​ protect​ ​ from​ ​ unauthorized​ ​ user. The number of star will be equal to the number of characters hidden, and make this program dynamic</h2>
+    <form>
+        <input id="email" type="email"  value="agherasavan3@gmail.com"/>
+    </form>
+    <p id="write"></p>
+    <button onclick="submit()">Submit</button>
+    <script>
+       
+        const pattern = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+        
+        function submit(){
+            let hide_email = email.value;
+            const regx = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+            if(regx.test(hide_email)){
+                let email = hide_email.split('@');
+                let first = email[0];
+                document.getElementById('write').innerHTML 
+                = first[0] + first[1] + first.slice(2,first.length-1).replace(/./g,"*") +email[0][email[0].length-1] +"@" +  email[1];
+                
+            }else{
+                alert("write valid email");
+            }
+        
+        }
+    </script>
+</body>
+</html>
