@@ -1,0 +1,48 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>task2 new</title>
+ </head>
+ <body>
+   <h2>
+     task2 new logic
+   </h2>
+   <p id="out_put"></p>
+   <script>
+     console.time("abc");
+let d1= new Date();
+let array =  [{Name:'Ravindra' ,Sport:['Chess','Cricket'] },
+ {Name:'Ravi' ,Sport:['Cricket','Football'] },
+ {Name:'Rishabh' ,Sport:['Table-tennis','Football'] },];
+        
+ let map = new Map();
+
+     array.forEach((v,i,a)=>{
+      v.Sport.forEach((vv,ii,aa)=>{
+        if(map.has(vv)){
+          map.set(vv,map.get(vv)+" "+v.Name);
+        }else 
+        {
+          map.set(vv,v.Name);
+        }
+      })
+     })
+
+    // make array object from map
+    let final = [];
+     for(let [key,value] of map){
+      final.push({[`${key}`]:[...new Set(value.split(" "))]});
+     }
+
+ document.getElementById('out_put').innerHTML = JSON.stringify(final)
+console.log(final);
+ console.timeEnd("abc");
+ let d2 = new Date();
+ console.log(d2-d1);
+   </script>
+ </body>
+ </html>

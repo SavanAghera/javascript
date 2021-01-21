@@ -11,7 +11,9 @@
     </h2><br/>
     <p id="out_put"></p>
     <script>
-        let array =  [{Name:'Ravindra' ,Sport:['Chess','Cricket'] },
+       console.time("abc");
+       let d1= new Date();
+       let array =  [{Name:'Ravindra' ,Sport:['Chess','Cricket'] },
         {Name:'Ravi' ,Sport:['Cricket','Football'] },
         {Name:'Rishabh' ,Sport:['Table-tennis','Football'] }];
         
@@ -19,8 +21,9 @@
         let new_array = [...array];
         let final_arr = [];
         let sports = new_array.map((el)=> el.Sport);
+        
         sports =[ ...new Set(sports.flat(3))] ;
-        console.log(['Chess','Cricket'].indexOf("Cricket"))
+        console.log(sports);
 
         for(let i=0;i<sports.length;i++){
             final_arr.push(new Object({[`${sports[i]}`]:[]}))
@@ -39,6 +42,10 @@
 
 
         document.getElementById('out_put').innerHTML = JSON.stringify(final_arr,null,4);
+        console.timeEnd("abc");
+
+        let d2 = new Date();
+        console.log(d2-d1);
     </script>
 </body>
 </html>

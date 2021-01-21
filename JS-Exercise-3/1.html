@@ -17,16 +17,20 @@
         const pattern = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
         
         function submit(){
-            let hide_email = email.value;
+            const hide_email = email.value;
             const regx = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+            const Email = hide_email.split('@');
+            const first = Email[0];
             if(regx.test(hide_email)){
-                let email = hide_email.split('@');
-                let first = email[0];
+                if(first.length<3){
+                    document.getElementById('write').innerHTML = hide_email;
+                }else{
                 document.getElementById('write').innerHTML 
-                = first[0] + first[1] + first.slice(2,first.length-1).replace(/./g,"*") +email[0][email[0].length-1] +"@" +  email[1];
+                = first[0] + first[1] + first.slice(2,first.length-1).replace(/./g,"*") +Email[0][Email[0].length-1] +"@" +  Email[1]; 
+                }
                 
             }else{
-                alert("write valid email");
+                alert("write valid Email");
             }
         
         }
