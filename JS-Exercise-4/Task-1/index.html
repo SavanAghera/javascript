@@ -49,7 +49,7 @@
         let time = document.getElementById('time');
         let date = document.getElementById('date');
         let stopwatch = document.getElementById('stopwatch');
-        let tick , interval ,newtime,m,Resume,Stop,temp, IsResume=false;
+        let tick , interval ,newtime,m,Resume,Stop,temp;
 
         let date_obj = new Date();
         time.innerHTML = date_obj.toTimeString().split(" ")[0];
@@ -63,11 +63,10 @@
 
         function start(){
             if(!interval){
-                tick = new Date();
-                Stop =new Date();
-                Resume = new Date();
-                temp = new Date(0);
-                console.log(temp-tick)
+                tick = new Date().getTime();
+                Stop =new Date().getTime();
+                Resume = new Date().getTime();
+                temp = new Date(0).getTime();
                 interval = setInterval(tickUpdate,10);
             }
 
@@ -76,7 +75,7 @@
         function stop(){
            
             if(interval){
-                Stop=new Date();
+                Stop=new Date().getTime();
                 clearInterval(interval);
                 interval = null;
             }
@@ -84,10 +83,8 @@
 
         function resume(){
             if(!interval){
-            Resume=new Date();
-            IsResume=true;
-            temp = new Date(temp + (Resume-Stop));
-            console.log(temp )
+            Resume=new Date().getTime();
+            temp = (temp + (Resume-Stop));
             interval = setInterval(tickUpdate,10);}
         }
         function reset(){
@@ -97,8 +94,7 @@
         }
         }
         function tickUpdate(){
-           newtime = new Date();
-           console.log(newtime-temp-tick)
+           newtime = new Date().getTime();
            formateTick(newtime-temp-tick)
         }
         function formateTick(time){
