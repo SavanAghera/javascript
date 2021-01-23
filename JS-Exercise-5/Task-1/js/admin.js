@@ -1,17 +1,12 @@
-
 const uname = (window.location.href).split("=")[1];
 function showCourses(){
-    if(document.getElementById("course_container").style.display === "none")
-        document.getElementById("course_container").style.display = "";
-    else    
-    document.getElementById("course_container").style.display = "none";
+    course_container.style.display="";
+    student_container.style.display = "none";
 }
 
 function showStudents(){
-    if(document.getElementById("student_container").style.display === "none")
-        document.getElementById("student_container").style.display = "";
-    else    
-    document.getElementById("student_container").style.display = "none";
+    student_container.style.display = ""
+    course_container.style.display = "none";
 }
 
 function addCourse(name){
@@ -29,13 +24,13 @@ function addCourse(name){
                 break;
             }
         }
-        if(flag){
+        if(flag && name != ""){
             courses.push(name);
             localStorage.setItem("courses", JSON.stringify(courses));
             alert("Course added successfully");
-            let list = "<ul>";
+            let list = '<ul class="list-group">';
             for(course in courses){
-                list += `<li>${courses[course]}</li>`;
+                list += `<li class="list-group-item">${courses[course]}</li>`;
             }
             list += `</ul>`
             document.getElementById("listOfCourses").innerHTML = list;
