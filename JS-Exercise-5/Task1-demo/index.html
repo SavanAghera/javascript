@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            Chaitanya's LMS
+        </title>
+        <script src="js/signup.js"></script>
+    </head>
+    <body>
+        <!-- login and signup form -->
+        <div>
+            <input type="text" name="uname" id="uname" placeholder="Enter username">
+        </div>
+        <div>
+            <input type="password" name="pass" id="pass" placeholder="Enter password">
+        </div>
+        <div>
+            <input type="password" name="cpass" id="cpass" placeholder="Confirm password">
+        </div>
+        <div>
+            <input type="radio" name = "userType" value="admin" checked><label>Admin</label>
+            <input type="radio" name = "userType" value="user"><label>User</label>
+        </div>
+        <div>
+            <a href="#" id = "backToLogin" onclick="showLoginForm()">Back to log in</a>
+            <a href="#" id = "backToSignup" onclick="showRegisterForm()" style="display: none;">Back to Sign up</a>
+            <button name="signup" onclick="signup()" id="signup">Sign up</button>
+            <button name="login" id="login" style="display: none;" onclick="login()">Login</button>
+        </div>
+    </body>
+</html>

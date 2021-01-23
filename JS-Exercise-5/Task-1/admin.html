@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Task-1</title>
+    <script src="js/admin.js"></script>
+</head>
+<body>
+    <body onload="renderData()">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Rapid ops</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a id = "courses"  class="nav-link" onclick="showCourses()">Courses</a>
+                  </li>
+                  <li class="nav-item">
+                    <a id = "students" class="nav-link" onclick="showStudents()" >Students</a>
+                </li>
+                </ul>
+                <span class="navbar-text">
+                  <span id="nav_admin">Hello (Admin)</span> &nbsp;<a href="login.html">Logout</a>
+                </span>
+              </div>
+            </div>
+          </nav>
+
+          <div class="container">
+               
+            <div>
+                <div id = "course_container">
+                    <p>List of courses</p>
+                    <div>
+                        <span id = "listOfCourses"></span>
+                        <input type="text" name = "course" id = "course" placeholder="Enter course name">
+                        <button class = "btn btn-primary" id = "addCourse" onclick="addCourse(document.getElementById('course').value)">Add course</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id = "student_container" style="display: none;">
+                    <p>List of students</p>
+                    <div>
+                        <span id = "listOfStudents"></span> 
+                    </div>
+                </div>
+            </div>
+
+          </div>
+
+
+
+
+       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   
+</body>
+</html>
