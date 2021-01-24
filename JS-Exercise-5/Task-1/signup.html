@@ -61,9 +61,8 @@
             let comfirm_password = document.getElementById('comfirm_password').value;
             let user_type = document.getElementsByName('User_type');
             
-
-            if(uname == null || uname.length <3){
-                alert("Please enter your username ,length must be greater then 3");
+            if(uname == null || uname.length <3 || uname.split(" ").length >= 2){
+                alert("Please enter your username ,length must be greater then 3 , cant enter space in username");
                 return false;
             }
             if(password == null || password.length<5){
@@ -102,7 +101,6 @@
                         localStorage.setItem("users", JSON.stringify(users));
                         alert("Registered successfylly!");
                     }
-                alert(user_type[0].value)
             }
             //for admin
             if(user_type[0].checked){
