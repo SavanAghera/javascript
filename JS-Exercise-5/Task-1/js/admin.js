@@ -1,4 +1,5 @@
 const uname = (window.location.href).split("=")[1];
+
 function showCourses(){
     course_container.style.display="";
     student_container.style.display = "none";
@@ -9,6 +10,113 @@ function showStudents(){
     course_container.style.display = "none";
 }
 
+
+
+function render(){
+    document.getElementById("nav_admin").innerHTML= `${uname}(Admin)`;
+    if(!localStorage.getItem("courses")){
+        localStorage.setItem("courses", "[]");
+    }
+    // show courses
+    const courses = JSON.parse(localStorage.getItem("courses"));
+    let list = '<div class="row ">';
+    for(course in courses){
+        list += `<div class="col-sm-12 col-lg-3 mb-4"><div class=" course">${courses[course]}</div></div>`;
+    }
+    list += `</div>`
+    document.getElementById("list_Courses").innerHTML = list;
+
+    if(!localStorage.getItem("users")){
+        localStorage.setItem("users", "[]");
+    }
+    //show stdents
+    const users = JSON.parse(localStorage.getItem("users"));
+    let list2 = '<ul class="list-group" >';
+    for(let user of users){
+        let list = '<ul class="list-group mt-4">';
+        
+        let subs = user.course;
+        console.log(subs);
+        for(let course in courses){
+            console.log(user.username)
+            list += `<li class="list-group-item student_course_item">
+                ${courses[course]}
+                <div class="course_asign_revoke_btn">
+                <button class="btn btn-primary" id='assign${user.username}${course}' onclick=assignc('${user.username}','${course}') style="display:'';">assign</button>
+                <button class="btn btn-danger" id="revoke${user.username}${course}" onclick=revoke('${user.username}',${course}) style="display:'';">revoke</button>
+
+                </li>`
+        }
+        list += `</ul>`
+        console.log(user.course);
+
+
+        list2 += `<li class="list-group-item student_courses_li">${user.username}&nbsp&nbsp&nbsp
+            <button class = "btn btn-primary student_course_detailBtn" onclick="student_details('${user.username}', '${user.course}')">details</button>
+            <div id = "${user.username}_" style = "display:none;">
+            ${list}
+            </div>
+            </li>`;
+    }
+    list2 += `</ul>`
+    document.getElementById("list_students").innerHTML = list2;
+}
+
+//show hide student details
+function student_details(name, stu_courses){
+    const courses = JSON.parse(localStorage.getItem("courses"));
+    for(let course in courses){
+        if(stu_courses.indexOf(courses[course]) >-1){
+            document.getElementById(`assign${name}${course}`).style.display = 'none';
+            document.getElementById(`revoke${name}${course}`).style.display = '';
+            
+        }else {
+            document.getElementById(`assign${name}${course}`).style.display = ''
+            document.getElementById(`revoke${name}${course}`).style.display = 'none';
+
+        }   
+    }
+    if(document.getElementById(`${name}_`).style.display === "none"){
+        document.getElementById(`${name}_`).style.display = "";
+       
+    }
+    else    
+        document.getElementById(`${name}_`).style.display = "none";
+}
+
+function assignc(name,course){
+    let users = localStorage.getItem("users");
+    const courses = JSON.parse(localStorage.getItem("courses"));
+    users = JSON.parse(users);
+    for(user in users){
+        if(users[user].username === name){
+            users[user].course.push(courses[course]);
+            localStorage.setItem("users", JSON.stringify(users));
+            document.getElementById(`assign${name}${course}`).style.display = "none";
+            document.getElementById(`revoke${name}${course}`).style.display = "";
+            alert("course assigned");
+            location.reload();
+        }
+
+    }
+}
+
+function revoke(name,course){
+    let users = localStorage.getItem("users");
+    const courses = JSON.parse(localStorage.getItem("courses"));
+    users = JSON.parse(users);
+    for(user in users){
+        if(users[user].username === name){
+            const index = users[user].course.indexOf(courses[course]);
+            users[user].course.splice(index, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            document.getElementById(`assign${name}${course}`).style.display = "";
+            document.getElementById(`revoke${name}${course}`).style.display = "none";
+            alert("course revoked");
+            location.reload();
+        }
+    }
+}
 function addCourse(name){
 
     if(!localStorage.getItem("courses")){
@@ -28,116 +136,15 @@ function addCourse(name){
             courses.push(name);
             localStorage.setItem("courses", JSON.stringify(courses));
             alert("Course added successfully");
-            let list = '<ul class="list-group">';
+            let list = '<div class="row ">';
             for(course in courses){
-                list += `<li class="list-group-item">${courses[course]}</li>`;
+                list += `<div class="col-sm-12 col-lg-3 mb-4"><div class=" course">${courses[course]}</div></div>`;
             }
-            list += `</ul>`
-            document.getElementById("listOfCourses").innerHTML = list;
+            list += `</div>`
+            document.getElementById("list_Courses").innerHTML = list;
             document.getElementById("course").value = "";
         }
 }
-
-function renderData(){
-    document.getElementById("nav_admin").innerHTML= `${uname}(Admin)`;
-    if(!localStorage.getItem("courses")){
-        localStorage.setItem("courses", "[]");
-    }
-
-    const courses = JSON.parse(localStorage.getItem("courses"));
-    let list = '<ul class="list-group">';
-    for(course in courses){
-        list += `<li class="list-group-item">${courses[course]}</li>`;
-    }
-    list += `</ul>`
-    document.getElementById("listOfCourses").innerHTML = list;
-
-    if(!localStorage.getItem("users")){
-        localStorage.setItem("users", "[]");
-    }
-
-    const users = JSON.parse(localStorage.getItem("users"));
-    let list2 = '<ul class="list-group" >';
-    for(user in users){
-        console.log(users[user].course);
-        list2 += `<li class="list-group-item">${users[user].username}&nbsp&nbsp&nbsp<button class = "btn btn-primary" onclick="studentDetails('${users[user].username}', '${users[user].course}')">Details</button></li><div id = "${users[user].username}" style = "display:none;"></div>`;
-    }
-    list2 += `</ul>`
-    document.getElementById("listOfStudents").innerHTML = list2;
-}
-
-function studentDetails(name, subjects){
-    if(document.getElementById(name).style.display === "none"){
-        document.getElementById(name).style.display = "";
-        const courses = JSON.parse(localStorage.getItem("courses"));
-        let list = "<table border = '1' style= 'border-style: dashed;'>";
-        let flag = false;
-        
-        let subs = subjects.split(",");
-        console.log(subs);
-        for(course in courses){
-            flag = false;
-            list+="<tr>";
-            if(subs.length == 0)
-                list += `<td>${courses[course]}</td><td><button class="btn btn-primary" id = "assign${courses[course]}" onclick = "assignCourse('${name}', '${courses[course]}')">Assign</button>
-                        <button class="btn btn-primary" id = "revoke${courses[course]}" onclick = "revokeCourse('${name}', '${courses[course]}')" style = "display:none;">Revoke</button></td>`;
-            else{
-                for(sub in subs){
-                    if(subs[sub] === courses[course]){
-                        list += `<td>${courses[course]}</td>
-                        <button class = "btn btn-primary" id = "assign${courses[course]}" onclick = "assignCourse('${name}', '${courses[course]}')" style = "display:none;">Assign</button>
-                        <td><button class = "btn btn-danger" id = "revoke${courses[course]}" onclick = "revokeCourse('${name}', '${courses[course]}')">Revoke</button></td>`;
-                        flag = true;
-                        break;
-                    }    
-                }
-                if(flag)
-                    continue;
-                list += `<td>${courses[course]}</td><td><button class = "btn btn-primary"  id = "assign${courses[course]}" onclick = "assignCourse('${name}', '${courses[course]}')">Assign</button>
-                        <button class = "btn btn-danger" id = "revoke${courses[course]}" onclick = "revokeCourse('${name}', '${courses[course]}')" style = "display:none;">Revoke</button></td>`;
-            }
-            list+= "</tr>";
-        }
-        list += `</table>`
-        document.getElementById(name).innerHTML = list;
-    }
-    else    
-        document.getElementById(name).style.display = "none";
-}
-
-function assignCourse(userName, courseName){
-    let users = localStorage.getItem("users");
-    users = JSON.parse(users);
-    for(user in users){
-        if(users[user].username === userName){
-            users[user].course.push(courseName);
-            localStorage.setItem("users", JSON.stringify(users));
-            document.getElementById(`assign${courseName}`).style.display = "none";
-            document.getElementById(`revoke${courseName}`).style.display = "";
-            alert("course assigned");
-            location.reload();
-        }
-    }
-    console.log(user);
-}
-
-function revokeCourse(userName, courseName){
-    let users = localStorage.getItem("users");
-    users = JSON.parse(users);
-    for(user in users){
-        if(users[user].username === userName){
-            const index = users[user].course.indexOf(courseName);
-            console.log(index);
-            users[user].course.splice(index, 1);
-            localStorage.setItem("users", JSON.stringify(users));
-            document.getElementById(`assign${courseName}`).style.display = "";
-            document.getElementById(`revoke${courseName}`).style.display = "none";
-            alert("course revoked");
-            location.reload();
-        }
-    }
-}
-
 
 function renderCourses(){
     document.getElementById("uname2").innerHTML = `${uname}`;
@@ -151,10 +158,10 @@ function renderCourses(){
             break;
         }
     }
-    let list = '<ul class="list-group">';
+    let list = '<div class="row">';
     for(course in courses){
-        list += `<li class="list-group-item">${courses[course]}</li>`
+        list += `<div class="col-sm-12 col-lg-3 mb-3"><div class="course">${courses[course]}</div></div>`
     }
-    list+="</ul>";
+    list+="</div>";
     document.getElementById("listOfCourses").innerHTML = list;
 }
