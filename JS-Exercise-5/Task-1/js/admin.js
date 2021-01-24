@@ -1,3 +1,10 @@
+
+if(localStorage.getItem('login') == null){
+    window.location.href = 'login.html';
+}
+{
+var [login_user] =JSON.parse( localStorage.getItem('login'));
+}
 const uname = (window.location.href).split("=")[1];
 
 function showCourses(){
@@ -13,7 +20,7 @@ function showStudents(){
 
 
 function render(){
-    document.getElementById("nav_admin").innerHTML= `${uname}(Admin)`;
+    document.getElementById("nav_admin").innerHTML= `${login_user.username}(Admin)`;
     if(!localStorage.getItem("courses")){
         localStorage.setItem("courses", "[]");
     }
