@@ -22,7 +22,7 @@ function clickB1(){
 
 document.addEventListener("keydown",   
 function (e) {
-    
+
     if((e.which == '38' || e.which =='40' || e.which == '37' || e.which == '39')&&press_one){
        press_one =false;
         setInterval(()=>{
@@ -31,7 +31,7 @@ function (e) {
         b4.style.backgroundColor ="#"+ (colorb4%16777215).toString(16);
         },5000)
     } 
-    if (e.keyCode == '38' || e.which == '39') {
+    if (e.which == '38' || e.which == '39') {
         // up or right arrow 
         colorb4 +=500;
         b4.style.backgroundColor ="#"+ (colorb4%16777215).toString(16);
